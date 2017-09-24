@@ -2,12 +2,12 @@
 
 one:
   username: Test1
-  password_digest: test1test1
+  password_digest: <%= User.digest('test1test1') %>
   email: test1@test.test
   active: true
 
 two:
   username: Test2
-  password_digest: test2test2
+  password_digest:  <%= User.digest('test2test2') %>
   email: test2@test.test
   active: false

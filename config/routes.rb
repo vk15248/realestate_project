@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  get 'session/create'
-
-  get 'session/destroy'
+  resources :real_estates
+  root 'static_pages#home'
+  get '/login', to: 'session#new'
+  post '/login', to: 'session#create'
+  delete '/logout', to: 'session#destroy'
+  get '/signup', to: 'users#new'
 
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

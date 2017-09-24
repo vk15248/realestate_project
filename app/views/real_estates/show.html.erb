@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @real_estate.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @real_estate.price %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @real_estate.lat %>
+</p>
+
+<p>
+  <strong>Lon:</strong>
+  <%= @real_estate.lon %>
+</p>
+
+<p>
+  <strong>Added by:</strong>
+  <%= @real_estate.user.username %>
+</p>
+
+<% if (@real_estate.user == current_user) %>
+    <%= link_to 'Edit', edit_real_estate_path(@real_estate) %> |
+<% end %>
+<%= link_to 'Back', real_estates_path %>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  real_estates: one
+  user: one
+
+two:
+  real_estates: two
+  user: two
