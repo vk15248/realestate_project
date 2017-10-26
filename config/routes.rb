@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  post 'like/create'
+
+  delete 'like/destroy'
+
   resources :real_estates
   root 'static_pages#home'
   get '/login', to: 'session#new'
@@ -7,5 +11,10 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
 
   resources :users
+
+  resources :real_estates, :shallow => true do
+    resources :album
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

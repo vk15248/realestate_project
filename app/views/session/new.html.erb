@@ -1,15 +1,20 @@
+<div class="container-fluid bg-1 text-center profile-content">
+  <h2><i class="glyphicon glyphicon-user"></i></h2>
+  <h3> Login </h3>
+</div>
+
 <%= form_for(:session) do |form| %>
-    <div class="field">
+    <div class="form-group">
       <%= form.label :email %>
-      <%= form.text_field :email, id: :user_email %>
+      <%= form.text_field :email, id: :user_email, class: 'form-control' %>
     </div>
 
-    <div class="field">
-      <%= form.label :password_digest %>
-      <%= form.password_field :password, id: :password %>
+    <div class="form-group">
+      <%= form.label "Password" %>
+      <%= form.password_field :password, id: :password, class: 'form-control' %>
     </div>
 
-    <div class="actions">
-      <%= form.submit %>
+    <div class="form-group">
+      <%= form.submit class: 'btn btn-default profile-button' %>
     </div>
 <% end %>

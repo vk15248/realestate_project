@@ -1,37 +1,38 @@
 <%= form_with(model: real_estate, local: true) do |form| %>
-  <% if real_estate.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(real_estate.errors.count, "error") %> prohibited this real_estate from being saved:</h2>
+    <% if real_estate.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(real_estate.errors.count, "error") %> prohibited this real_estate from being saved:</h2>
 
-      <ul>
-      <% real_estate.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% real_estate.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description, id: :real_estate_description, class: 'form-control' %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :real_estate_description %>
-  </div>
+    <div class="form-group">
+      <%= form.label :price %>
+      <%= form.text_field :price, id: :real_estate_price, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price, id: :real_estate_price %>
-  </div>
+    <div class="form-group">
+      <%= form.label :lat %>
+      <%= form.text_field :lat, id: :real_estate_lat, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :lat %>
-    <%= form.text_field :lat, id: :real_estate_lat %>
-  </div>
+    <div class="form-group">
+      <%= form.label :lon %>
+      <%= form.text_field :lon, id: :real_estate_lon, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :lon %>
-    <%= form.text_field :lon, id: :real_estate_lon %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="actions">
+      <%= form.submit class: 'btn btn-default profile-button' %>
+    </div>
 <% end %>
+

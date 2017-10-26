@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true
   has_many :real_estates, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :real_estate_likes, through: :likes, source: :real_estate, class_name: "RealEstate"
 
   # Returns the hash digest of the given string.
   def User.digest(string)

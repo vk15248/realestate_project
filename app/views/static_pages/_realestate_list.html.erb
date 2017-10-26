@@ -1,0 +1,6 @@
+<% if @user_real_estate.any? %>
+    <ul>
+      <%= render @user_real_estate %>
+    </ul>
+    <%= will_paginate @user_real_estate %>
+<% end %>

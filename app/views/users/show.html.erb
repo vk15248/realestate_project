@@ -1,24 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid bg-1 text-center profile-content">
+  <h2><i class="glyphicon glyphicon-user"></i></h2>
+  <h3>  <%= @user.username %></h3>
+  <h4><i class="glyphicon glyphicon-envelope"></i> <%= @user.email %></h4>
+  <% if @user == current_user %>
+      <h4 class="profile-link"> <%= link_to '<i class="glyphicon glyphicon-wrench"></i> Edit'.html_safe, edit_user_path(@user) %> </h4>
+  <% end %>
+</div>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<br/>
 
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
+<div class="container-fluid bg-1 text-center profile-content">
+  <h2><i class="glyphicon glyphicon-heart"></i></h2>
+  <h3>Liked Real Estate</h3>
+  <%= render 'real_estates/card', real_estate_list: @liked_real_estate %>
+</div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<br/>
 
-<p>
-  <strong>Active:</strong>
-  <%= @user.active %>
-</p>
+<div class="container-fluid bg-1 text-center profile-content">
+  <h2><i class="glyphicon glyphicon-home"></i></h2>
+  <h3>Published Real Estate</h3>
+  <h4 class="profile-link"> <%= link_to '<i class="glyphicon glyphicon-plus"></i> Add'.html_safe, new_real_estate_path %> </h4>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <%= render 'real_estates/card', real_estate_list: @added_real_estate %>
+
+</div>
+

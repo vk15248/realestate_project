@@ -10,15 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924095225) do
+ActiveRecord::Schema.define(version: 20170926130044) do
 
   create_table "likes", force: :cascade do |t|
-    t.integer "real_estates_id"
     t.integer "user_id"
+    t.integer "real_estate_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["real_estates_id"], name: "index_likes_on_real_estates_id"
+    t.index ["real_estate_id"], name: "index_likes_on_real_estate_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "real_estate_id"
+    t.index [nil], name: "index_real_estates_on_picture_id_id"
   end
 
   create_table "real_estates", force: :cascade do |t|

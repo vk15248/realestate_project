@@ -1,0 +1,4 @@
+<%= image_tag picture.name.url if picture.name %>
+<span class="timestamp">
+    Posted <%= time_ago_in_words(picture.created_at) %> ago.
+</span>

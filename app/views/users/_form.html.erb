@@ -1,37 +1,35 @@
 <%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <% if user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :username %>
+      <%= form.text_field :username, id: :user_username, class: 'form-control' %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username, id: :user_username %>
-  </div>
+    <% if current_page?(signup_path) %>
+        <div class="form-group">
+          <%= form.label :password %>
+          <%= form.password_field :password, id: :user_password_digest, class: 'form-control' %>
+        </div>
+    <% end %>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password, id: :user_password_digest %>
-  </div>
+    <div class="form-group">
+      <%= form.label :email %>
+      <%= form.text_field :email, id: :user_email, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :user_email %>
-  </div>
 
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active, id: :user_active %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div>
+      <%= form.submit class: 'btn btn-default profile-button' %>
+    </div>
 <% end %>

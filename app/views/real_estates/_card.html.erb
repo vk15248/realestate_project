@@ -1,0 +1,9 @@
+<% if real_estate_list.any? %>
+    <div class="container">
+      <div class="row">
+        <%= render real_estate_list %>
+      </div>
+    </div>
+    <%= will_paginate real_estate_list %>
+<% end %>
+<br><br>

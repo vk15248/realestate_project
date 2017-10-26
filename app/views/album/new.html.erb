@@ -1,0 +1,19 @@
+<h1>Album#new</h1>
+<p>Find me in app/views/album/new.html.erb</p>
+
+<% if @picture %>
+    <% if @picture.real_estate.pictures.any? %>
+        <%= render @picture.real_estate.pictures %>
+    <% end %>
+<% end %>
+
+<%= form_for(:picture, url: real_estate_album_index_path) do |form| %>
+    <span class="picture">
+    <%= form.file_field :name, accept: 'image/jpeg,image/gif,image/png' %>
+  </span>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+<% end %>
+

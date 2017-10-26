@@ -1,3 +1,37 @@
 // Place all the styles related to the RealEstates controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+.realestate-sidebar {
+  color: #000;
+  background-color: #f1f1f1;
+}
+
+.realestate-container {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+}

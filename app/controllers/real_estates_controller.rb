@@ -1,6 +1,6 @@
 class RealEstatesController < ApplicationController
   before_action :set_real_estate, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :index]
+  before_action :logged_in_user, only: [:edit, :update, :destroy, :index]
 
   # GET /real_estates
   # GET /real_estates.json
@@ -71,6 +71,6 @@ class RealEstatesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def real_estate_params
-    params.require(:real_estate).permit(:description, :price, :lat, :lon)
+    params.require(:real_estate).permit(:description, :price, :lat, :lon, :picture)
   end
 end
