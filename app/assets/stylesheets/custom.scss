@@ -45,3 +45,18 @@ form {
   background-color: transparent;
 }
 
+#error_explanation {
+  width: 100% !important;
+  ul {
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  width: 100%;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+

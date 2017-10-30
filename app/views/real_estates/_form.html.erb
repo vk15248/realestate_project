@@ -1,13 +1,16 @@
 <%= form_with(model: real_estate, local: true) do |form| %>
     <% if real_estate.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(real_estate.errors.count, "error") %> prohibited this real_estate from being saved:</h2>
+          <div class="alert alert-danger">
+            <%= pluralize(real_estate.errors.count, "error") %> prohibited this real_estate from being saved:
 
-          <ul>
-            <% real_estate.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+
+            <ul>
+              <% real_estate.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
     <% end %>
 
