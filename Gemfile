@@ -37,6 +37,7 @@ gem 'will_paginate',           '3.1.5'
 gem 'carrierwave',             '1.1.0'
 gem 'mini_magick'
 gem 'bootstrap-sass', '3.3.7'
+gem 'jquery-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

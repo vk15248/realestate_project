@@ -17,7 +17,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Home", root_path %></li>
+        <li class="<%= 'active' if current_page?(root_path) %>"> <%= link_to "Home", root_path %></li>
         <li><a href="#">Products</a></li>
         <li><a href="#">Deals</a></li>
         <li><a href="#">Stores</a></li>
@@ -25,13 +25,13 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
-            <li>
+            <li class="<%= 'active' if current_page?(current_user) %>">
               <%= link_to "<span class='glyphicon glyphicon-user'></span> Your Account".html_safe, current_user %>
             </li>
             <li><%= link_to "Log out", logout_path, method: :delete %></li>
         <% else %>
-            <li><%= link_to "Log in", login_path %></li>
-            <li><%= link_to "Sign up", signup_path %></li>
+            <li class="<%= 'active' if current_page?(login_path) %>"><%= link_to "Log in", login_path %></li>
+            <li class="<%= 'active' if current_page?(signup_path) %>"><%= link_to "Sign up", signup_path %></li>
         <% end %>
       </ul>
     </div>
