@@ -1,5 +1,5 @@
 class AlbumController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create, :destroy, :edit]
+  before_action :correct_user, only: [:new, :create, :destroy, :edit]
 
   def new
     @picture = Picture.new
@@ -35,4 +35,9 @@ class AlbumController < ApplicationController
     params.require(:picture).permit(:name, :real_estate_id, :id)
   end
 
+  # Confirms the correct user.
+  def correct_user
+    @real_estate = RealEstate.find(params[:real_estate_id])
+    redirect_to(root_url) unless current_user==@real_estate.user
+  end
 end

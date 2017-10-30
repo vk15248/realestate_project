@@ -1,4 +1,6 @@
 class LikeController < ApplicationController
+  before_action :logged_in_user, only: [:new, :create, :destroy]
+
   def create
     @like = Like.new
     @like.user_id=current_user.id
