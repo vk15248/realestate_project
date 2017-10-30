@@ -12,7 +12,7 @@
           <%= @real_estate.user.username %>, <%= time_ago_in_words(@real_estate.created_at) %> ago
         </h5>
 
-        <h4 class="profile-link">
+        <h4 class="profile-link" id="realestate-links">
           <% if @real_estate.user == current_user %>
               <%= link_to '<i class="glyphicon glyphicon-wrench"></i> Edit'.html_safe, edit_real_estate_path(@real_estate) %>
           <% elsif !@real_estate.liked?(current_user) %>

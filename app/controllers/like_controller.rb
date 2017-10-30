@@ -5,6 +5,9 @@ class LikeController < ApplicationController
     @real_estate = RealEstate.find(params[:real_estate])
     @like.real_estate = @real_estate
     @like.save
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
