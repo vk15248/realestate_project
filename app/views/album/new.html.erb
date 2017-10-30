@@ -1,19 +1,24 @@
-<h1>Album#new</h1>
-<p>Find me in app/views/album/new.html.erb</p>
+<div class="container-fluid bg-1 text-center profile-content">
+  <h2><i class="glyphicon glyphicon-camera"></i></h2>
+  <h3>Images</h3>
 
-<% if @picture %>
-    <% if @picture.real_estate.pictures.any? %>
-        <%= render @picture.real_estate.pictures %>
-    <% end %>
-<% end %>
+  <h5>
+    <strong>For realestate:</strong>
+    <%= link_to "#{@real_estate.description}", real_estate_path(@real_estate) %>
+  </h5>
+
+  <div class="col-md-8" id="realestate-gallery">
+    <%= render 'real_estates/gallery' %>
+  </div>
+</div>
 
 <%= form_for(:picture, url: real_estate_album_index_path) do |form| %>
-    <span class="picture">
-    <%= form.file_field :name, accept: 'image/jpeg,image/gif,image/png' %>
-  </span>
+    <div class="form-group">
+    <%= form.file_field :name, accept: 'image/jpeg,image/gif,image/png',  class: 'form-control'%>
+  </div>
 
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit class: 'btn btn-default profile-button' %>
     </div>
 <% end %>
 

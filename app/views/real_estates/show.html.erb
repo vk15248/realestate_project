@@ -1,38 +1,39 @@
-<div class="row no-gutters">
-  <div class="col-md-4">
-    <div class="realestate-sidebar">
-      <div class="realestate-container">
-        <h3>
-          <%= @real_estate.description %></h3>
-        <h3>
-          <strong>Price:</strong>
-          <%= @real_estate.price %></h3>
-        <h5>
-          <strong>Added by:</strong>
-          <%= @real_estate.user.username %>, <%= time_ago_in_words(@real_estate.created_at) %> ago
-        </h5>
+<div class="container-fluid bg-1 text-center profile-content">
+  <h2><i class="glyphicon glyphicon-home"></i></h2>
+  <h3>
+    <%= @real_estate.description %></h3>
+  <h3>
+    <strong>Price:</strong>
+    <%= @real_estate.price %></h3>
+  <h5>
+    <strong>Added by:</strong>
+    <%= link_to "#{@real_estate.user.username}", user_path(@real_estate.user) %>
+    , <%= time_ago_in_words(@real_estate.created_at) %> ago
+  </h5>
 
-        <h4 class="profile-link" id="realestate-links">
-          <% if @real_estate.user == current_user %>
-              <%= link_to '<i class="glyphicon glyphicon-wrench"></i> Edit'.html_safe, edit_real_estate_path(@real_estate) %>
-          <% elsif !@real_estate.liked?(current_user) %>
-              <%= link_to '<i class="glyphicon glyphicon-heart"></i> Like'.html_safe, like_create_url(:real_estate => @real_estate.id), method: :post, remote: true %>
-          <% end %>
-        </h4>
-      </div>
-    </div>
+  <h4 class="profile-link" id="realestate-links">
+    <% if @real_estate.user == current_user %>
+        <%= link_to '<i class="glyphicon glyphicon-wrench"></i> Edit'.html_safe, edit_real_estate_path(@real_estate) %>
+    <% elsif !@real_estate.liked?(current_user) %>
+        <%= link_to '<i class="glyphicon glyphicon-heart"></i> Like'.html_safe, like_create_url(:real_estate => @real_estate.id), method: :post, remote: true %>
+    <% end %>
+  </h4>
+</div>
+
+
+<div class="container-fluid bg-1 text-center profile-content">
+  <h2><i class="glyphicon glyphicon-camera"></i></h2>
+  <h3>Images</h3>
+  <h4 class="profile-link">
+    <% if @real_estate.user == current_user %>
+        <%= link_to '<i class="glyphicon glyphicon-plus"></i> Add'.html_safe, new_real_estate_album_path(@real_estate) %>
+    <% end %>
+  </h4>
+  <div class="col-md-8" id="realestate-gallery">
+    <%= render 'gallery' %>
   </div>
-  <div class="col-md-8">
-    <div class="container">
-      <div class="row">
-        <% @real_estate.pictures.each do |i| %>
-            <div class="gallery">
-              <%= link_to path_to_image (i.name), :remote => true, target: :_blank do %>
-                  <%= image_tag(i.name) %>
-              <% end %>
-            </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+</div>
+
+
+
 </div>
