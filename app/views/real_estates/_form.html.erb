@@ -4,7 +4,6 @@
           <div class="alert alert-danger">
             <%= pluralize(real_estate.errors.count, "error") %> prohibited this real_estate from being saved:
 
-
             <ul>
               <% real_estate.errors.full_messages.each do |message| %>
                   <li><%= message %></li>
@@ -13,6 +12,10 @@
           </div>
         </div>
     <% end %>
+
+    <div style='width: 100%;'>
+      <div id="map" style='width: 100%; height: 400px;'></div>
+    </div>
 
     <div class="form-group">
       <%= form.label :description %>
@@ -26,12 +29,12 @@
 
     <div class="form-group">
       <%= form.label :lat %>
-      <%= form.text_field :lat, id: :real_estate_lat, class: 'form-control' %>
+      <%= form.text_field :lat, id: :real_estate_lat, class: 'form-control', :placeholder => "Click on the map to select" %>
     </div>
 
     <div class="form-group">
       <%= form.label :lon %>
-      <%= form.text_field :lon, id: :real_estate_lon, class: 'form-control' %>
+      <%= form.text_field :lon, id: :real_estate_lon, class: 'form-control', :placeholder => "Click on the map to select" %>
     </div>
 
     <div class="actions">
@@ -39,3 +42,47 @@
     </div>
 <% end %>
 
+<script>
+    handler = Gmaps.build('Google');
+    handler.buildMap({
+            provider: {
+                disableDefaultUI: true
+                // pass in other Google Maps API options here
+            },
+            internal: {
+                id: 'map'
+            }
+        },
+        function () {
+            <% if !@real_estate.lat.nil? %>
+            markers = handler.addMarkers([
+                {
+                    "lat": <%=raw @real_estate.lat %>,
+                    "lng": <%=raw @real_estate.lon %>
+                }
+            ]);
+            handler.bounds.extendWith(markers);
+            <% else %>
+            markers = [];
+            handler.map.centerOn({lat: 43.84864, lng: 18.35644});
+            <% end %>
+
+            handler.fitMapToBounds();
+            handler.getMap().setZoom(12);
+        }
+    );
+
+    google.maps.event.addListener(handler.getMap(), 'click', function (event) {
+        document.getElementById("real_estate_lat").value = event.latLng.lat();
+        document.getElementById("real_estate_lon").value = event.latLng.lng();
+        if (markers[0])
+            handler.removeMarker(markers[0]);
+        markers = handler.addMarkers([
+            {
+                "lat": event.latLng.lat(),
+                "lng": event.latLng.lng()
+            }
+        ]);
+    });
+
+</script>

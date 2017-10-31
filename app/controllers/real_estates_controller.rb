@@ -80,4 +80,5 @@ class RealEstatesController < ApplicationController
     @real_estate = RealEstate.find(params[:id])
     redirect_to(root_url) unless current_user==@real_estate.user
   end
+
 end
