@@ -35,6 +35,19 @@
   </div>
 </div>
 
+<br/>
 
+<div class="container-fluid bg-1 text-center profile-content">
+  <h2><i class="glyphicon glyphicon-heart"></i></h2>
+  <% if @real_estate.likes.any? %>
+      <h3>Liked by:</h3>
+      <% @real_estate.likes.each do |like| %>
+          <h5>
+            <%= link_to "#{like.user.username}", user_path(like.user) %>
+            , <%= time_ago_in_words(like.created_at) %> ago
+          </h5>
+      <% end %>
+  <% end %>
+</div>
 
 </div>
