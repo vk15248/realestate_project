@@ -1,6 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$dark-color: #101010;
+$gray-color: #f2f2f2;
+$light-gray-color: #eeeeee;
+$link-color: #fff;
+
 /* Remove the navbar's default rounded borders and increase the bottom margin */
 .navbar {
   margin-bottom: 50px;
@@ -14,7 +19,7 @@
 
 /* Add a gray background color and some padding to the footer */
 footer {
-  background-color: #f2f2f2;
+  background-color: $gray-color;
   padding: 25px;
 }
 
@@ -28,14 +33,14 @@ form {
 }
 
 .panel-heading a {
-  color: #fff;
+  color: $link-color;
   font-weight: bold;
   background-color: transparent;
   text-transform: uppercase;
 }
 
 .panel-heading a:visited {
-  color: #fff;
+  color: $link-color;
   font-weight: bold;
   background-color: transparent;
   text-transform: uppercase;
@@ -60,3 +65,57 @@ form {
   }
 }
 
+.pagination {
+  font-size: 16px;
+}
+
+.pagination > * {
+  margin-right: 0.1em;
+  padding: 0.3em 0.4em;
+}
+
+.pagination a:hover {
+  background: #202020 none repeat scroll 0 0;
+  text-shadow: 1px 1px 1px #171717;
+}
+
+.pagination a:active {
+  text-shadow: none;
+}
+
+.pagination .current {
+  background: #202020 none repeat scroll 0 0;
+  color: white;
+  text-shadow: 1px 1px 1px #171717;
+}
+
+.pagination .disabled {
+  color: #C0C0C0;
+}
+
+.profile-link a {
+  color: $dark-color;
+}
+
+.profile-link a:hover {
+  background-color: $gray-color;
+  color: $gray-color;
+}
+
+.profile-content {
+  background-color: $gray-color;
+}
+
+.profile-button {
+  background-color: $light-gray-color;
+}
+
+.panel-primary {
+  border-color: $dark-color !important;
+}
+
+.panel-primary > .panel-heading {
+  color: $gray-color !important;
+  background-color: $dark-color !important;
+  border-color: $dark-color !important;
+}

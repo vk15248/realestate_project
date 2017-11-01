@@ -46,9 +46,9 @@
 
 <br/>
 
-<div class="container-fluid bg-1 text-center profile-content">
-  <h2><i class="glyphicon glyphicon-heart"></i></h2>
-  <% if @real_estate.likes.any? %>
+<% if @real_estate.likes.any? %>
+    <div class="container-fluid bg-1 text-center profile-content">
+      <h2><i class="glyphicon glyphicon-heart"></i></h2>
       <h3>Liked by:</h3>
       <% @real_estate.likes.each do |like| %>
           <h5>
@@ -56,8 +56,8 @@
             , <%= time_ago_in_words(like.created_at) %> ago
           </h5>
       <% end %>
-  <% end %>
-</div>
+    </div>
+<% end %>
 
 </div>
 
