@@ -14,6 +14,7 @@
   <h4 class="profile-link" id="realestate-links">
     <% if @real_estate.user == current_user %>
         <%= link_to '<i class="glyphicon glyphicon-wrench"></i> Edit'.html_safe, edit_real_estate_path(@real_estate) %>
+        <%= link_to '<i class="glyphicon glyphicon-remove"></i> Delete'.html_safe, real_estate_path(@real_estate), method: :delete%>
     <% elsif !@real_estate.liked?(current_user) %>
         <%= link_to '<i class="glyphicon glyphicon-heart"></i> Like'.html_safe, like_create_url(:real_estate => @real_estate.id), method: :post, remote: true %>
     <% end %>
@@ -81,7 +82,7 @@
             ]);
             handler.bounds.extendWith(markers);
             handler.fitMapToBounds();
-            handler.getMap().setZoom(12);
+            handler.getMap().setZoom(17);
         }
     );
 </script>

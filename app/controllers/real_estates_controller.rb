@@ -1,12 +1,12 @@
 class RealEstatesController < ApplicationController
   before_action :set_real_estate, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:edit, :update, :destroy, :index]
+  before_action :logged_in_user, only: [:edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /real_estates
   # GET /real_estates.json
   def index
-    @real_estates = RealEstate.all
+    @real_estates = RealEstate.all.paginate(page: params[:page], per_page:12)
   end
 
   # GET /real_estates/1
@@ -59,7 +59,7 @@ class RealEstatesController < ApplicationController
   def destroy
     @real_estate.destroy
     respond_to do |format|
-      format.html {redirect_to real_estates_url, notice: 'Real estate was successfully destroyed.'}
+      format.html {redirect_to root_url, notice: 'Real estate was successfully destroyed.'}
       format.json {head :no_content}
     end
   end
