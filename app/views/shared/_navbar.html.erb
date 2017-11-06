@@ -19,6 +19,7 @@
       <ul class="nav navbar-nav">
         <li class="<%= 'active' if current_page?(root_path) %>"> <%= link_to "Home", root_path %></li>
         <li class="<%= 'active' if current_page?(real_estates_path) %>"> <%= link_to "Realestate", real_estates_path %></li>
+        <li class="<%= 'active' if current_page?(map_index_path) %>"> <%= link_to "Map", map_index_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>

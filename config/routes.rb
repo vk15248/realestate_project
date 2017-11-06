@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'map/index'
+
   post 'like/create'
 
   delete 'like/destroy'
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   post '/login', to: 'session#create'
   delete '/logout', to: 'session#destroy'
   get '/signup', to: 'users#new'
+  get 'map', to: 'map#index'
 
   resources :users
 
