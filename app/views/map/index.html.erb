@@ -1,0 +1,26 @@
+<h1>Map#index</h1>
+<p>Find me in app/views/map/index.html.erb</p>
+<div style='width: 100%;'>
+  <div id="map" style='width: 100%; height: 400px;'></div>
+</div>
+
+<script>
+    handler = Gmaps.build('Google');
+    handler.buildMap({
+            provider: {
+                disableDefaultUI: true,
+                // pass in other Google Maps API options here
+            },
+            internal: {
+                id: 'map'
+            }
+        },
+        function () {
+            markers = handler.addMarkers(<%=raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            handler.getMap().setZoom(15);
+            handler.map.centerOn({lat: 43.84864, lng: 18.35644});
+        }
+    );
+</script>
