@@ -1,4 +1,4 @@
-<% if real_estate_list.any? %>
+<% if !real_estate_list.nil? and real_estate_list.any? %>
     <div class="container">
       <div class="row">
         <%= render real_estate_list %>

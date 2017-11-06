@@ -6,7 +6,15 @@ class RealEstatesController < ApplicationController
   # GET /real_estates
   # GET /real_estates.json
   def index
-    @real_estates = RealEstate.all.paginate(page: params[:page], per_page:12)
+    if params[:price_from].nil? and params[:price_to].nil?
+      @real_estates = RealEstate.all.paginate(page: params[:page], per_page: 12)
+    else
+      @real_estates = RealEstate.where(search(params), price_from: params[:price_from], price_to: params[:price_to]);
+      if params[:order_by_price] != 'none'
+        @real_estates = @real_estates.order("price " + params[:order_by_price].to_s)
+      end
+      @real_estates = @real_estates.paginate(page: params[:page], per_page: 12)
+    end
   end
 
   # GET /real_estates/1
@@ -31,6 +39,7 @@ class RealEstatesController < ApplicationController
 
     respond_to do |format|
       if @real_estate.save
+        flash[:success] = "Real estate was successfully created."
         format.html {redirect_to @real_estate, notice: 'Real estate was successfully created.'}
         format.json {render :show, status: :created, location: @real_estate}
       else
@@ -45,6 +54,7 @@ class RealEstatesController < ApplicationController
   def update
     respond_to do |format|
       if @real_estate.update(real_estate_params)
+        flash[:success] = "Real estate was successfully updated."
         format.html {redirect_to @real_estate, notice: 'Real estate was successfully updated.'}
         format.json {render :show, status: :ok, location: @real_estate}
       else
@@ -59,6 +69,7 @@ class RealEstatesController < ApplicationController
   def destroy
     @real_estate.destroy
     respond_to do |format|
+      flash[:success] = "Real estate was successfully destroyed."
       format.html {redirect_to root_url, notice: 'Real estate was successfully destroyed.'}
       format.json {head :no_content}
     end
@@ -72,7 +83,7 @@ class RealEstatesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def real_estate_params
-    params.require(:real_estate).permit(:description, :price, :lat, :lon, :picture)
+    params.require(:real_estate).permit(:description, :price, :lat, :lon, :picture, :price_from, :price_to)
   end
 
   # Confirms the correct user.
@@ -81,4 +92,16 @@ class RealEstatesController < ApplicationController
     redirect_to(root_url) unless current_user==@real_estate.user
   end
 
+  def search(params)
+    conditions = ""
+    if !params[:price_from].empty?
+      conditions = "price >= :price_from"
+    end
+    if !params[:price_to].empty?
+      if !conditions.nil? and !conditions.empty?
+        conditions+=" and "
+      end
+      conditions += "price <= :price_to"
+    end
+  end
 end

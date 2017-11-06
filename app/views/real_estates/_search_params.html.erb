@@ -1,0 +1,23 @@
+<%= form_tag real_estates_path, :method => 'get', :id => "realestate_search" do %>
+    <h4> Price </h4>
+    <div style="border: 1px solid; border-radius: 15px; padding-top: 5px;">
+      <p>
+        From:
+        <%= number_field_tag :price_from %>
+        To:
+        <%= number_field_tag :price_to %>
+      </p>
+      <h5>Order by</h5>
+      <p>
+        <%= radio_button_tag(:order_by_price, "asc") %>
+        <%= label_tag(:order_by_price, "From smallest") %>
+        <%= radio_button_tag(:order_by_price, "desc") %>
+        <%= label_tag(:order_by_price_desc, "From largest") %>
+        <%= radio_button_tag(:order_by_price, "none", :checked) %>
+        <%= label_tag(:order_by_price_none, "None") %>
+      </p>
+    </div>
+    <div style="padding-top: 5px">
+      <%= submit_tag "Search", :name => nil, :style => "padding-top:5px" %>
+    </div>
+<% end %>
