@@ -1,6 +1,10 @@
 <div class="col-sm-4">
   <div class="panel panel-primary">
-    <div class="panel-heading">  <%= link_to "#{real_estate.description}", real_estate %></div>
+    <div class="panel-heading">
+      <%= link_to "#{real_estate.description}", real_estate %>
+      <br/>
+      <%= real_estate.address %>
+    </div>
     <div class="panel-body">
       <% if real_estate.pictures.any? %>
           <%= image_tag real_estate.pictures.sample(1).first.name, class: "img-responsive", style: "width:100%;" %>
