@@ -6,7 +6,12 @@ class MapController < ApplicationController
       marker.lat realestate.lat
       marker.lng realestate.lon
       marker.title realestate.description
-      string = "<a href=" + real_estate_path(realestate) + " style='text-decoration: underline;'>" + realestate.description.to_s + "</a>"
+      string = realestate.description.to_s
+     # string = "<a href=" + real_estate_path(realestate) + " style='text-decoration: underline;'>" + realestate.description.to_s + "</a>"
+      unless realestate.address.nil?
+        string+= "<br/>" + realestate.address
+      end
+      string += "<br/><a href=" + real_estate_path(realestate) + " style='text-decoration: underline;'> View </a>"
       marker.infowindow string
     end
   end
