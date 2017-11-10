@@ -7,15 +7,21 @@ class RealEstatesController < ApplicationController
   # GET /real_estates.json
   def index
     @real_estates = RealEstate.all
+    if !(params[:price_from].nil? or params[:price_from].empty?) or !(params[:price_to].nil? or params[:price_to].empty?)
+      flash[:success] = ""
+    end
     if !params[:price_from].nil? and !params[:price_from].empty?
       @real_estates = @real_estates.where(price_from_condition, price_from: params[:price_from])
+      flash[:success] = "Price from: " + params[:price_from]
     end
-    if !params[:price_from].nil? and !params[:price_to].empty?
+    if !params[:price_to].nil? and !params[:price_to].empty?
       @real_estates = @real_estates.where(price_to_condition, price_to: params[:price_to])
+      flash[:success] += " Price to: " + params[:price_to]
     end
 
-    if params[:order_by_price] != 'none'
+    if !params[:order_by_price].nil? and params[:order_by_price] != 'none'
       @real_estates = @real_estates.order("price " + params[:order_by_price].to_s)
+      flash[:success] += " Ordered by: " + params[:order_by_price]
     end
     @real_estates = @real_estates.paginate(page: params[:page], per_page: 12)
   end
