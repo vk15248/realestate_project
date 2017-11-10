@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'map/index'
+  post 'map/index'
 
   post 'like/create'
 

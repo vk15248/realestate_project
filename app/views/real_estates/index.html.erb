@@ -3,19 +3,8 @@
   <% if current_user %>
       <h4 class="profile-link"> <%= link_to '<i class="glyphicon glyphicon-plus"></i> Add'.html_safe, new_real_estate_path %> </h4>
   <% end %>
-  <h4 class="profile-link"> <%= link_to '<i class="glyphicon glyphicon-search"></i> Search'.html_safe, real_estates_path, :id => 'search-link' %> </h4>
-  <div id="search-params" style="display: none">
-    <%= render 'search_params' %>
-  </div>
+  <h4 class="profile-link"> <%= link_to '<i class="glyphicon glyphicon-map-marker"></i> Show on map'.html_safe, map_index_path(:price_from => params[:price_from], :price_to => params[:price_to]) %> </h4>
+  <%= render 'search_params', order: true, action: real_estates_path %>
 </div>
 <hr/>
 <%= render 'real_estates/card', real_estate_list: @real_estates %>
-<script>
-    jQuery("#search-link").click(function (event) {
-        if (jQuery("#search-params").css("display") === "none")
-            jQuery("#search-params").css("display", "block");
-        else if (jQuery("#search-params").css("display") === "block")
-            jQuery("#search-params").css("display", "none");
-        event.preventDefault(); // Prevent link from following its href
-    });
-</script>

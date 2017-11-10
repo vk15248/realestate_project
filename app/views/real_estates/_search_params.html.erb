@@ -1,23 +1,39 @@
-<%= form_tag real_estates_path, :method => 'get', :id => "realestate_search" do %>
-    <h4> Price </h4>
-    <div style="border: 1px solid; border-radius: 15px; padding-top: 5px;">
-      <p>
-        From:
-        <%= number_field_tag :price_from %>
-        To:
-        <%= number_field_tag :price_to %>
-      </p>
-      <h5>Order by</h5>
-      <p>
-        <%= radio_button_tag(:order_by_price, "asc") %>
-        <%= label_tag(:order_by_price, "From smallest") %>
-        <%= radio_button_tag(:order_by_price, "desc") %>
-        <%= label_tag(:order_by_price_desc, "From largest") %>
-        <%= radio_button_tag(:order_by_price, "none", :checked) %>
-        <%= label_tag(:order_by_price_none, "None") %>
-      </p>
-    </div>
-    <div style="padding-top: 5px">
-      <%= submit_tag "Search", :name => nil, :style => "padding-top:5px" %>
-    </div>
-<% end %>
+<h4 class="profile-link"> <%= link_to '<i class="glyphicon glyphicon-search"></i> Search'.html_safe, real_estates_path, :id => 'search-link' %> </h4>
+<div id="search-params" style="display: none">
+  <%= form_tag action, :method => 'get', :id => "realestate_search" do %>
+      <h4> Price </h4>
+      <div class="search-div">
+        <p>
+          From:
+          <%= number_field_tag :price_from %>
+          To:
+          <%= number_field_tag :price_to %>
+        </p>
+
+        <% if order %>
+            <h5>Order by</h5>
+            <p>
+              <%= radio_button_tag(:order_by_price, "asc") %>
+              <%= label_tag(:order_by_price, "From smallest") %>
+              <%= radio_button_tag(:order_by_price, "desc") %>
+              <%= label_tag(:order_by_price_desc, "From largest") %>
+              <%= radio_button_tag(:order_by_price, "none", :checked) %>
+              <%= label_tag(:order_by_price_none, "None") %>
+            </p>
+        <% end %>
+      </div>
+      <div style="padding-top: 5px">
+        <%= submit_tag "Search", :name => nil, :style => "padding-top:5px" %>
+      </div>
+  <% end %>
+</div>
+
+<script>
+    jQuery("#search-link").click(function (event) {
+        if (jQuery("#search-params").css("display") === "none")
+            jQuery("#search-params").css("display", "block");
+        else if (jQuery("#search-params").css("display") === "block")
+            jQuery("#search-params").css("display", "none");
+        event.preventDefault(); // Prevent link from following its href
+    });
+</script>

@@ -64,7 +64,7 @@
             handler.bounds.extendWith(markers);
             <% else %>
             markers = [];
-            handler.map.centerOn({lat: 43.84864, lng: 18.35644});
+            handler.map.centerOn({lat: <%=raw @city.first %>, lng: <%=raw @city.last %>});
             <% end %>
 
             handler.fitMapToBounds();
