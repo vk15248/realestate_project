@@ -22,6 +22,15 @@
             </p>
         <% end %>
       </div>
+      <h4> Address </h4>
+      <div class="search-div">
+        <p>
+          Near:
+          <%= text_field_tag :address %>
+          Within (km) :
+          <%= number_field_tag :distance, 10, :min=>10%>
+        </p>
+      </div>
       <div style="padding-top: 5px">
         <%= submit_tag "Search", :name => nil, :style => "padding-top:5px" %>
       </div>

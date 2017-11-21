@@ -10,6 +10,10 @@ class RealEstatesController < ApplicationController
     if !(params[:price_from].nil? or params[:price_from].empty?) or !(params[:price_to].nil? or params[:price_to].empty?)
       flash[:success] = ""
     end
+    if !params[:address].nil? and !params[:address].empty? and !params[:distance].nil? and !params[:distance].empty?
+      @real_estates = @real_estates.near(params[:address], params[:distance], :order => false, :units => :km)
+      flash[:success] = "Realestate within " + params[:distance] + " km from " + params[:address]
+    end
     if !params[:price_from].nil? and !params[:price_from].empty?
       @real_estates = @real_estates.where(price_from_condition, price_from: params[:price_from])
       flash[:success] = "Price from: " + params[:price_from]
