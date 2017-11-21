@@ -28,7 +28,16 @@
           Near:
           <%= text_field_tag :address %>
           Within (km) :
-          <%= number_field_tag :distance, 10, :min=>10%>
+          <%= number_field_tag :distance, 10, :min=>1%>
+        </p>
+      </div>
+      <h4> Floor </h4>
+      <div class="search-div">
+        <p>
+          From:
+          <%= number_field_tag :floor_from %>
+          To:
+          <%= number_field_tag :floor_to %>
         </p>
       </div>
       <div style="padding-top: 5px">

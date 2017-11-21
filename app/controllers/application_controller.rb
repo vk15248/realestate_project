@@ -39,4 +39,12 @@ class ApplicationController < ActionController::Base
   def price_to_condition
     "price <= :price_to"
   end
+
+  def floor_from_condition
+    "floor >= :floor_from"
+  end
+
+  def floor_to_condition
+    "floor <= :floor_to"
+  end
 end

@@ -8,7 +8,30 @@
   </h3>
   <h3>
     <strong>Price:</strong>
-    <%= @real_estate.price %></h3>
+    <%= @real_estate.price %>
+  </h3>
+  <hr style="color: black"/>
+  <h4>
+    <strong>Size (m2):</strong>
+    <%= @real_estate.size %>,
+
+    <strong>Floor:</strong>
+    <%= @real_estate.floor %>,
+
+    <strong>Elevator:</strong>
+    <%= @real_estate.elevator ? 'Yes' : 'No' %>
+  </h4>
+  <h4>
+    <strong>Balcony:</strong>
+    <%= @real_estate.balcony ? 'Yes' : 'No' %>,
+
+    <strong>Renovated:</strong>
+    <%= @real_estate.renovated ? 'Yes' : 'No' %>,
+
+    <strong>Old building:</strong>
+    <%= @real_estate.old_building ? 'Yes' : 'No' %>
+  </h4>
+  <hr/>
   <h5>
     <strong>Added by:</strong>
     <%= link_to "#{@real_estate.user.username}", user_path(@real_estate.user) %>

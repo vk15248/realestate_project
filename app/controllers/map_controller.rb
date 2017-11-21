@@ -1,6 +1,6 @@
 class MapController < ApplicationController
   def index
-    @real_estates = RealEstate.where(:sold => 'false')
+    @real_estates = RealEstate.where(:sold => 'f')
     if !(params[:price_from].nil? or params[:price_from].empty?) or !(params[:price_to].nil? or params[:price_to].empty?)
       flash[:success] = ""
     end
@@ -16,6 +16,15 @@ class MapController < ApplicationController
       @real_estates = @real_estates.where(price_to_condition, price_to: params[:price_to])
       flash[:success] += " Price to: " + params[:price_to]
     end
+    if !params[:floor_from].nil? and !params[:floor_from].empty?
+      @real_estates = @real_estates.where(floor_from_condition, floor_from: params[:floor_from])
+      flash[:success] = "Floor from: " + params[:floor_from]
+    end
+    if !params[:floor_to].nil? and !params[:floor_to].empty?
+      @real_estates = @real_estates.where(floor_to_condition, floor_to: params[:floor_to])
+      flash[:success] += " Floor to: " + params[:floor_to]
+    end
+
     @city = default_location
 
     @hash = Gmaps4rails.build_markers(@real_estates) do |realestate, marker|
