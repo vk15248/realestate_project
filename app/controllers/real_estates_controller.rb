@@ -30,6 +30,14 @@ class RealEstatesController < ApplicationController
       @real_estates = @real_estates.where(floor_to_condition, floor_to: params[:floor_to])
       flash[:success] += " Floor to: " + params[:floor_to]
     end
+    if !params[:size_from].nil? and !params[:size_from].empty?
+      @real_estates = @real_estates.where(size_from_condition, size_from: params[:size_from])
+      flash[:success] = "Size from: " + params[:size_from]
+    end
+    if !params[:size_to].nil? and !params[:size_to].empty?
+      @real_estates = @real_estates.where(size_to_condition, size_to: params[:size_to])
+      flash[:success] += " Size to: " + params[:size_to]
+    end
 
     if !params[:order_by_price].nil? and params[:order_by_price] != 'none'
       @real_estates = @real_estates.order("price " + params[:order_by_price].to_s)

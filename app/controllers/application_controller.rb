@@ -47,4 +47,12 @@ class ApplicationController < ActionController::Base
   def floor_to_condition
     "floor <= :floor_to"
   end
+
+  def size_from_condition
+    "size >= :size_from"
+  end
+
+  def size_to_condition
+    "size <= :size_to"
+  end
 end

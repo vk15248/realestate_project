@@ -40,6 +40,15 @@
           <%= number_field_tag :floor_to %>
         </p>
       </div>
+      <h4> Size </h4>
+      <div class="search-div">
+        <p>
+          From:
+          <%= number_field_tag :size_from %>
+          To:
+          <%= number_field_tag :size_to %>
+        </p>
+      </div>
       <div style="padding-top: 5px">
         <%= submit_tag "Search", :name => nil, :style => "padding-top:5px" %>
       </div>
