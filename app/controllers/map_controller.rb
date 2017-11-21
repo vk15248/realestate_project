@@ -1,6 +1,6 @@
 class MapController < ApplicationController
   def index
-    @real_estates = RealEstate.all
+    @real_estates = RealEstate.where(:sold => 'false')
     if !(params[:price_from].nil? or params[:price_from].empty?) or !(params[:price_to].nil? or params[:price_to].empty?)
       flash[:success] = ""
     end

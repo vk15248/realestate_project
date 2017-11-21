@@ -1,12 +1,12 @@
 class RealEstatesController < ApplicationController
-  before_action :set_real_estate, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :set_real_estate, only: [:show, :edit, :update, :destroy, :sold]
+  before_action :logged_in_user, only: [:edit, :update, :destroy, :sold]
+  before_action :correct_user, only: [:edit, :update, :destroy, :sold]
 
   # GET /real_estates
   # GET /real_estates.json
   def index
-    @real_estates = RealEstate.all
+    @real_estates = RealEstate.where(:sold => 'false')
     if !(params[:price_from].nil? or params[:price_from].empty?) or !(params[:price_to].nil? or params[:price_to].empty?)
       flash[:success] = ""
     end
@@ -34,6 +34,7 @@ class RealEstatesController < ApplicationController
   # GET /real_estates/new
   def new
     @real_estate = RealEstate.new
+    @city = default_location
   end
 
   # GET /real_estates/1/edit
@@ -45,11 +46,12 @@ class RealEstatesController < ApplicationController
   def create
     @real_estate = RealEstate.new(real_estate_params)
     @real_estate.user_id=current_user.id
+    @real_estate.sold = false
 
     respond_to do |format|
       if @real_estate.save
         flash[:success] = "Real estate was successfully created."
-        format.html {redirect_to @real_estate, notice: 'Real estate was successfully created.'}
+        format.html {redirect_to @real_estate}
         format.json {render :show, status: :created, location: @real_estate}
       else
         format.html {render :new}
@@ -64,7 +66,7 @@ class RealEstatesController < ApplicationController
     respond_to do |format|
       if @real_estate.update(real_estate_params)
         flash[:success] = "Real estate was successfully updated."
-        format.html {redirect_to @real_estate, notice: 'Real estate was successfully updated.'}
+        format.html {redirect_to @real_estate}
         format.json {render :show, status: :ok, location: @real_estate}
       else
         format.html {render :edit}
@@ -84,6 +86,15 @@ class RealEstatesController < ApplicationController
     end
   end
 
+  def sold
+    if @real_estate.update_attribute(:sold, true)
+      flash[:success] = "Real estate was successfully updated."
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_real_estate
@@ -92,7 +103,7 @@ class RealEstatesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def real_estate_params
-    params.require(:real_estate).permit(:description, :price, :lat, :lon, :picture, :price_from, :price_to)
+    params.require(:real_estate).permit(:description, :price, :lat, :lon, :picture, :price_from, :price_to, :elevator, :old_building, :renovated, :balcony, :room_number, :squared_meters, :floor)
   end
 
   # Confirms the correct user.

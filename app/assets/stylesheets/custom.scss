@@ -99,7 +99,7 @@ form {
 
 .profile-link a:hover {
   background-color: $gray-color;
-  color: $gray-color;
+  text-color: $dark-color;
 }
 
 .profile-content {
@@ -118,6 +118,8 @@ form {
   color: $gray-color !important;
   background-color: $dark-color !important;
   border-color: $dark-color !important;
+  height: 80px !important;
+  max-height: 80px !important;
 }
 
 .search-div {

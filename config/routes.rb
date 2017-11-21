@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'session#destroy'
   get '/signup', to: 'users#new'
   get 'map', to: 'map#index'
+  post '/real_estate/sold/:id', to: 'real_estates#sold', as: 'sold'
 
   resources :users
 

@@ -3,7 +3,7 @@
       <%= link_to path_to_image (i.name), :remote => true, target: :_blank do %>
           <%= image_tag(i.name) %>
       <% end %>
-      <% if @real_estate.user == current_user %>
+      <% if @real_estate.user == current_user and !@real_estate.sold %>
           <%= link_to '<i class="glyphicon glyphicon-remove"></i>'.html_safe, album_path(:id => i.id, :real_estate_id => @real_estate.id), method: :delete, remote: true %>
       <% end %>
     </div>

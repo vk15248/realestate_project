@@ -37,6 +37,41 @@
       <%= form.text_field :lon, id: :real_estate_lon, class: 'form-control', :placeholder => "Click on the map to select" %>
     </div>
 
+    <div class="form-group">
+      <%= form.label :floor %>
+      <%= form.number_field :floor, id: :real_estate_floor, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :room_number %>
+      <%= form.number_field :room_number, id: :real_estate_rm, class: 'form-control', min: 1 %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :squared_meters %>
+      <%= form.number_field :squared_meters, id: :real_estate_sm, class: 'form-control', min: 1 %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :old_building %>
+      <%= form.check_box :old_building, id: :real_estate_ob, class: 'checkbox-inline' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :elevator %>
+      <%= form.check_box :elevator, id: :real_estate_elevator, class: 'checkbox-inline' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :renovated %>
+      <%= form.check_box :renovated, id: :real_estate_renovated, class: 'checkbox-inline' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :balcony %>
+      <%= form.check_box :balcony, id: :real_estate_balcony, class: 'checkbox-inline' %>
+    </div>
+
     <div class="actions">
       <%= form.submit class: 'btn btn-default profile-button' %>
     </div>
