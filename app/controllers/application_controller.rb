@@ -55,4 +55,12 @@ class ApplicationController < ActionController::Base
   def size_to_condition
     "size <= :size_to"
   end
+
+  def rooms_from_condition
+    "room_number >= :rooms_from"
+  end
+
+  def rooms_to_condition
+    "room_number <= :rooms_to"
+  end
 end

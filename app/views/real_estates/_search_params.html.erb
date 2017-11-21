@@ -28,7 +28,7 @@
           Near:
           <%= text_field_tag :address %>
           Within (km) :
-          <%= number_field_tag :distance, 10, :min=>1%>
+          <%= number_field_tag :distance, 10, :min => 1 %>
         </p>
       </div>
       <h4> Floor </h4>
@@ -47,6 +47,31 @@
           <%= number_field_tag :size_from %>
           To:
           <%= number_field_tag :size_to %>
+        </p>
+      </div>
+      <h4> Room Number </h4>
+      <div class="search-div">
+        <p>
+          From:
+          <%= number_field_tag :rooms_from %>
+          To:
+          <%= number_field_tag :rooms_to %>
+        </p>
+      </div>
+      <h4> Other</h4>
+      <div class="search-div">
+        <p>
+          <%= label_tag(:balcony, "Balcony:") %>
+          <%= select_tag(:balcony, options_for_select([['Yes', 't'], ['No', 'f']]), :include_blank => true) %>
+
+          <%= label_tag(:renovated, "Renovated:") %>
+          <%= select_tag(:renovated, options_for_select([['Yes', 't'], ['No', 'f']]), :include_blank => true) %>
+
+          <%= label_tag(:elevator, "Elevator:") %>
+          <%= select_tag(:elevator, options_for_select([['Yes', 't'], ['No', 'f']]), :include_blank => true) %>
+
+          <%= label_tag(:old_building, "Old Building:") %>
+          <%= select_tag(:old_building, options_for_select([['Yes', 't'], ['No', 'f']]), :include_blank => true) %>
         </p>
       </div>
       <div style="padding-top: 5px">

@@ -3,7 +3,7 @@
   <% if current_user %>
       <h4 class="profile-link"> <%= link_to '<i class="glyphicon glyphicon-plus"></i> Add'.html_safe, new_real_estate_path %> </h4>
   <% end %>
-  <h4 class="profile-link"> <%= link_to '<i class="glyphicon glyphicon-map-marker"></i> Show on map'.html_safe, map_index_path(:price_from => params[:price_from], :price_to => params[:price_to], :address => params[:address], :distance => params[:distance], :floor_from => params[:floor_from], :floor_to => params[:floor_to], :size_from => params[:size_from], :size_to => params[:size_to]  )%> </h4>
+  <h4 class="profile-link"> <%= link_to '<i class="glyphicon glyphicon-map-marker"></i> Show on map'.html_safe, map_index_path(:price_from => params[:price_from], :price_to => params[:price_to], :address => params[:address], :distance => params[:distance], :floor_from => params[:floor_from], :floor_to => params[:floor_to], :size_from => params[:size_from], :size_to => params[:size_to], :rooms_from => params[:rooms_from], :rooms_to => params[:rooms_to], :balcony => params[:balcony], :elevator => params[:elevator], :renovated => params[:renovated], :old_building =>  params[:old_building])%> </h4>
   <%= render 'search_params', order: true, action: real_estates_path %>
 </div>
 <hr/>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121092558) do
+ActiveRecord::Schema.define(version: 20171121133557) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20171121092558) do
     t.integer "floor"
     t.float "size"
     t.float "room_number"
-    t.string "balcony"
+    t.boolean "balcony"
     t.string "boolean"
     t.boolean "renovated"
     t.boolean "elevator"
