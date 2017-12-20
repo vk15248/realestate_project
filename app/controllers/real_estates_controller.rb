@@ -7,6 +7,11 @@ class RealEstatesController < ApplicationController
   # GET /real_estates.json
   def index
     @real_estates = RealEstate.where(:sold => "f")
+
+    if params[:distance].nil? or params[:distance].empty?
+      params[:distance] = 10
+    end
+
     if (!params[:price_from].nil? and !params[:price_from].empty?) or
         (!params[:price_to].nil? and !params[:price_to].empty?) or
         (!params[:address].nil? and !params[:address].empty? and !params[:distance].nil? and !params[:distance].empty?) or

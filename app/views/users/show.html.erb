@@ -20,8 +20,9 @@
 <div class="container-fluid bg-1 text-center profile-content">
   <h2><i class="glyphicon glyphicon-home"></i></h2>
   <h3>Published Real Estate</h3>
-  <h4 class="profile-link"> <%= link_to '<i class="glyphicon glyphicon-plus"></i> Add'.html_safe, new_real_estate_path %> </h4>
-
+  <% if @user == current_user %>
+      <h4 class="profile-link"> <%= link_to '<i class="glyphicon glyphicon-plus"></i> Add'.html_safe, new_real_estate_path %> </h4>
+  <% end %>
   <%= render 'real_estates/card', real_estate_list: @added_real_estate %>
 
 </div>

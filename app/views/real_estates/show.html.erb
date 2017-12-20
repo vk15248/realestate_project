@@ -42,6 +42,16 @@
     , <%= time_ago_in_words(@real_estate.created_at) %> ago
   </h5>
 
+  <h5>
+    <strong>Number of likes:</strong>
+    <%= @real_estate.likes.size %>
+
+    <% if @real_estate.likes.any? %>
+        <strong>, Last Like:</strong>
+        <%= time_ago_in_words(@real_estate.likes.order('created_at desc').last.created_at) %> ago
+    <% end %>
+  </h5>
+
   <h4 class="profile-link" id="realestate-links">
     <% if @real_estate.sold %>
         <h2 style="color: red">SOLD</h2>
@@ -93,7 +103,10 @@
             , <%= time_ago_in_words(like.created_at) %> ago
           </h5>
       <% end %>
+
+      <%= column_chart @real_estate.likes.group_by_day(:created_at).count, xtitle: "Days", ytitle: "Likes" %>
     </div>
+
 <% end %>
 
 </div>

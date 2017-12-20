@@ -1,0 +1,23 @@
+<div class="container-fluid bg-1 text-center profile-content">
+  <h2>Statistics Visualisation</h2>
+
+  <h4 class="profile-link"> <%= link_to '<i class="glyphicon glyphicon-plus"></i> Add chart'.html_safe, chart_index_path, :id => 'add_chart' %> </h4>
+
+  <%= render 'report_settings' %>
+</div>
+
+<br/>
+
+<div id="charts">
+
+</div>
+
+<script>
+    jQuery("#add_chart").click(function (event) {
+        if (jQuery("#report-settings").css("display") === "none")
+            jQuery("#report-settings").css("display", "block");
+        else if (jQuery("#report-settings").css("display") === "block")
+            jQuery("#report-settings").css("display", "none");
+        event.preventDefault(); // Prevent link from following its href
+    });
+</script>

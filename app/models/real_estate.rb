@@ -4,7 +4,7 @@ class RealEstate < ApplicationRecord
   validates :lon, presence: true, numericality: {greater_than_or_equal_to: -180, less_than_or_equal_to: 180}
   validates :pictures, length: {maximum: 10, message: 'Only 10 pictures allowed'}
   validates :room_number, numericality: {only_integer: true, greater_than: 0}
-  validates :size, numericality: {greater_than: 0}
+  validates :sizeo, numericality: {greater_than: 0}
   validates :floor, numericality: {only_integer: true}
 
   belongs_to :user

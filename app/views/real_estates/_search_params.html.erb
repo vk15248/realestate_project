@@ -5,9 +5,9 @@
       <div class="search-div">
         <p>
           From:
-          <%= number_field_tag :price_from %>
+          <%= number_field_tag :price_from, params[:price_from] %>
           To:
-          <%= number_field_tag :price_to %>
+          <%= number_field_tag :price_to, params[:price_to] %>
         </p>
 
         <% if order %>
@@ -26,52 +26,52 @@
       <div class="search-div">
         <p>
           Near:
-          <%= text_field_tag :address %>
+          <%= text_field_tag :address, params[:address] %>
           Within (km) :
-          <%= number_field_tag :distance, 10, :min => 1 %>
+          <%= number_field_tag :distance, params[:distance], :min => 1 %>
         </p>
       </div>
       <h4> Floor </h4>
       <div class="search-div">
         <p>
           From:
-          <%= number_field_tag :floor_from %>
+          <%= number_field_tag :floor_from, params[:floor_from] %>
           To:
-          <%= number_field_tag :floor_to %>
+          <%= number_field_tag :floor_to, params[:floor_to] %>
         </p>
       </div>
       <h4> Size </h4>
       <div class="search-div">
         <p>
           From:
-          <%= number_field_tag :size_from %>
+          <%= number_field_tag :size_from, params[:size_from] %>
           To:
-          <%= number_field_tag :size_to %>
+          <%= number_field_tag :size_to, params[:size_to] %>
         </p>
       </div>
       <h4> Room Number </h4>
       <div class="search-div">
         <p>
           From:
-          <%= number_field_tag :rooms_from %>
+          <%= number_field_tag :rooms_from, params[:rooms_from] %>
           To:
-          <%= number_field_tag :rooms_to %>
+          <%= number_field_tag :rooms_to, params[:rooms_to] %>
         </p>
       </div>
       <h4> Other</h4>
       <div class="search-div">
         <p>
           <%= label_tag(:balcony, "Balcony:") %>
-          <%= select_tag(:balcony, options_for_select([['Yes', 't'], ['No', 'f']]), :include_blank => true) %>
+          <%= select_tag(:balcony, options_for_select([['Yes', 't'], ['No', 'f']], params[:balcony]), :include_blank => true) %>
 
           <%= label_tag(:renovated, "Renovated:") %>
-          <%= select_tag(:renovated, options_for_select([['Yes', 't'], ['No', 'f']]), :include_blank => true) %>
+          <%= select_tag(:renovated, options_for_select([['Yes', 't'], ['No', 'f']], params[:renovated]), :include_blank => true) %>
 
           <%= label_tag(:elevator, "Elevator:") %>
-          <%= select_tag(:elevator, options_for_select([['Yes', 't'], ['No', 'f']]), :include_blank => true) %>
+          <%= select_tag(:elevator, options_for_select([['Yes', 't'], ['No', 'f']], params[:elevator]), :include_blank => true) %>
 
           <%= label_tag(:old_building, "Old Building:") %>
-          <%= select_tag(:old_building, options_for_select([['Yes', 't'], ['No', 'f']]), :include_blank => true) %>
+          <%= select_tag(:old_building, options_for_select([['Yes', 't'], ['No', 'f']], params[:old_building]), :include_blank => true) %>
         </p>
       </div>
       <div style="padding-top: 5px">

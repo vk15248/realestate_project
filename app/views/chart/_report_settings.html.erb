@@ -1,0 +1,20 @@
+<div id="report-settings" style="display: none">
+  <%= form_tag chart_index_path, :method => 'post', :id => "generate_chart", :remote => true do %>
+      <p>
+        Graph
+        data: <%= select_tag(:data, options_for_select([['Realestate Count', 're_c'], ['Realestate Average Price', 're_p'], ['Likes Count', 'li_c']])) %>
+        Graph
+        type: <%= select_tag(:type, options_for_select([['Line', 'line'], ['Column', 'column'], ['Bar', 'bar'], ['Pie', 'pie']])) %>
+      </p>
+      <hr/>
+      <h4>Group by</h4>
+      <hr/>
+      <p>
+        Time: <%= select_tag(:range, options_for_select([['All', 'all'], ['Month', 'month'], ['Week', 'week']])) %>
+        Data: <%= select_tag(:group, options_for_select([['Building Type (old, new)', 'building'], ['Has Balcony', 'balcony'], ['Sold/Unsold', 'sold'], ['Renovated', 'renovated'], ['Room', 'room']]), :include_blank => true) %>
+      </p>
+      <div style="padding-top: 5px">
+        <%= submit_tag "Generate", :name => nil, :style => "padding-top:5px" %>
+      </div>
+  <% end %>
+</div>

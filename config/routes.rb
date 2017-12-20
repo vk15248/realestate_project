@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post '/real_estate/sold/:id', to: 'real_estates#sold', as: 'sold'
 
   resources :users
+  resources :chart
 
   resources :real_estates, :shallow => true do
     resources :album
