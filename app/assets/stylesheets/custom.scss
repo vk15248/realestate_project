@@ -10,11 +10,19 @@ $link-color: #fff;
 .navbar {
   margin-bottom: 50px;
   border-radius: 0;
+  background-color: $dark-color !important;
+  border-color: $dark-color !important;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+  background-color: $light-gray-color !important;
+  color: $dark-color !important;
 }
 
 /* Remove the jumbotron's default bottom margin */
 .jumbotron {
   margin-bottom: 0;
+  background-color: $light-gray-color !important;
 }
 
 /* Add a gray background color and some padding to the footer */
